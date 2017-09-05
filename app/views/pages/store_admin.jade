@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  .container
+    .row
+      form.form-horizontal(method="post", action="/admin/store")
+        .form-group
+          lable.col-sm-3.control-lable(for=inputStoreCode) Customers Code
+          .col-sm-10
+            input#inputStoreCode.form-control(type="text", name="store[code]", value="#{store.code}")
+        .form-group
+          lable.col-sm-3.control-lable(for=inputStoreName) Customers name
+          .col-sm-10
+            input#inputStoreName.form-control(type="text", name="store[name]", value="#{store.name}") 
+        .form-group
+          .col-sm-offset-2.col-sm-10
+          button.btn-default(type="submit") Submit

@@ -1,0 +1,49 @@
+.container
+  .row
+    .page-header.clearfix
+      h1=title
+      small products
+.navbar.navbar-default.navbar-fixed-bottom
+  .container
+    .navbar-header
+      a.naver-brand(href="/") Product
+    if user
+      p.navbar-text.navbar-right
+        span Welcome, #{user.name}
+        span &nbsp; &nbsp;
+        a.navbar-link(href="/logout") Sign Out
+    else
+      p.navbar-text.navbar-right
+        a.navbar-link(href='#',data-toggle="modal",data-target="#signupModal") Sign Up
+        span  &nbsp;| &nbsp;
+        a.navbar-link(href='#',data-toggle="modal",data-target="#signinModal") Sign In    
+#signupModal.modal.fade
+  .modal-dialog
+    .modal-content
+      form(method = "POST", action="/user/signup")
+        .modal-header Sign Up
+        .modal-body
+          .form-group
+            label(for="signupName") User Name
+            input#signupName.form-control(name="user[name]",type="text")
+          .form-group
+            label(for="signupPassword") Password
+            input#signupPassword.form-control(name="user[password]",type="text")
+        .modal-footer
+          button.btn.btn-default(type="button",data-dismiss = "modal") Close
+          button.btn.btn-success(type="submit") Submit
+#signinModal.modal.fade
+  .modal-dialog
+    .modal-content
+      form(method = "POST", action="/user/signin")
+        .modal-header Sign In
+        .modal-body
+          .form-group
+            label(for="signinName") User Name
+            input#signinName.form-control(name="user[name]",type="text")
+          .form-group
+            label(for="signinPassword") Password
+            input#signinPassword.form-control(name="user[password]",type="text")
+        .modal-footer
+          button.btn.btn-default(type="button",data-dismiss = "modal") Close
+          button.btn.btn-success(type="submit") Submit

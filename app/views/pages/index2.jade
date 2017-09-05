@@ -1,0 +1,18 @@
+extends ../layout
+block content
+  .container
+    .row(style="padding-bottom:50px;")
+      each store in stores
+        .panel.panel-default
+          .panel-heading
+            h3 #{store.name}
+          .panel-body
+            if store.movies && store.movies.length >0
+              each item in store.movies
+                .col-md-2
+                  .thumbnail
+                    a(href="/movie/#{item._id}")
+                      img(src="#{item.poster}", alt="#{item.title}")
+                    .caption
+                      h3 #{item.title}
+                      p: a.btn.btn-primary(href="/movie/#{item._id}",role="button") View
